@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Perlas — Admin</title>
+    <link rel="stylesheet" href="Page/CSS/maincontent.css">
+    <link rel="stylesheet" href="Page/CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="Home.html" class="site-title">PERLAS Admin</a>
+        <nav class="header-nav" aria-label="Admin navigation">
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="admin-panel">
+        <h1>Admin Console <span id="adminBadge" class="admin-user-badge"></span></h1>
+        <div id="adminContextBanner" class="announce-latest-wrap admin-context-banner">
+          <strong>Context:</strong> <span id="adminContextText"></span>
+        </div>
+
+        <div class="admin-tabs">
+          <button id="tabAnn" class="tab-button">Announcement</button>
+          <button id="tabPlayers" class="tab-button">Players</button>
+          <button id="tabAdmins" class="tab-button">Admins</button>
+        </div>
+
+        <div id="announceSection" class="admin-section">
+          <h2>Post Announcement</h2>
+          <textarea id="announcementText" class="announce-textarea">Enter announcement text here...</textarea>
+          <div class="announce-controls">
+            <label for="announcementText" class="visually-hidden">Announcement text</label>
+            <button id="postAnnouncementBtn">Post Announcement</button>
+            <span id="announceStatus" class="announce-status">Posted</span>
+            <span id="announceLink" class="announce-link"></span>
+          </div>
+          <div class="announce-latest-wrap">
+            <strong>Latest announcement:</strong>
+            <div id="latestAnnouncement" class="latest-announcement"></div>
+          </div>
+        </div>
+
+        <div id="playersSection" class="admin-section hidden">
+          <h2>Players</h2>
+          <div class="players-wrapper">
+            <table id="playersTable">
+              <thead>
+                <tr>
+                  <th>UID</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>AquaGem</th>
+                  <th>Last Active</th>
+                  <th>7-day Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="adminsSection" class="admin-section hidden">
+          <h2>Admins</h2>
+          <div id="adminsList" class="admins-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-note">Perlas Admin Console</div>
+    </footer>
+
+    <script src="Page/JS/firebase-init.js" defer></script>
+    <script src="Page/JS/admin.js" defer></script>
+  </body>
+</html>

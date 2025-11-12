@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Perlas — Announcement</title>
+    <link rel="stylesheet" href="Page/CSS/maincontent.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="Home.html" class="site-title">PERLAS</a>
+      </div>
+    </header>
+    <main class="announcement-main">
+      <div id="announcementRoot">
+        <h1>Announcement</h1>
+        <div id="announcementContent" class="announcement-content">Loading announcement...</div>
+        <div class="announcement-actions">
+          <a id="managePlayersLink" href="Admin.html?view=players">Manage players</a>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer-note">Perlas</div>
+    </footer>
+    <script src="Page/JS/firebase-init.js" defer></script>
+    <script>
+      // Read id from querystring, fall back to latest
+      function qs(name){ const p = new URLSearchParams(location.search); return p.get(name); }
+      const id = qs('id');
+      loadFirebase().then(()=>{
+        const db = firebase.database();
+        if(id){
+          db.ref(`announcements/list/${id}`).once('value').then(snap => {
+            const v = snap.val();
+            if(!v) return document.getElementById('announcementContent').textContent = 'Announcement not found.';
+            render(v);
+          }).catch(e=>{console.error(e); document.getElementById('announcementContent').textContent='Failed to load announcement.'});
+        } else {
+          db.ref('announcements/latest').once('value').then(snap=>{
+            const v = snap.val(); if(!v) return document.getElementById('announcementContent').textContent='No announcement available.'; render(v);
+          }).catch(e=>{console.error(e); document.getElementById('announcementContent').textContent='Failed to load announcement.'});
+        }
+
+        function render(v){
+          const d = new Date(v.postedAt||Date.now()).toLocaleString();
+          document.getElementById('announcementContent').innerHTML = `<div style="font-size:18px;font-weight:600;">${escapeHtml(v.text)}</div><div style="margin-top:8px;font-size:12px;color:#666">Posted: ${d} by ${escapeHtml(v.postedBy||'')}</div>`;
+          // update Manage players link to preserve the announcement id when navigating to admin
+          const mp = document.getElementById('managePlayersLink');
+          if(mp){
+            const q = id ? `?view=players&ann=${encodeURIComponent(id)}` : '?view=players';
+            mp.href = `Admin.html${q}`;
+          }
+        }
+
+        function escapeHtml(s){ if(!s) return ''; return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+      }).catch(e=>{ console.error('failed to load firebase',e); document.getElementById('announcementContent').textContent='Firebase failed to load.' });
+    </script>
+  </body>
+</html>

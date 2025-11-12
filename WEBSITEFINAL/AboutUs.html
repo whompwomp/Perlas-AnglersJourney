@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" href="Page/CSS/maincontent.css">
+    <!-- Font Awesome CDN: provide robust icon support in addition to local copies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Page/CSS/AboutUs.css">
+    <link rel="stylesheet" href="Page/CSS/styles.css">
+    <!-- Font Awesome: prefer CDN for fonts; fall back to local files if offline -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Page/Icons/all.min.css">
+    <link rel="stylesheet" href="Page/Icons/fontawesome.min.css">
+    <script defer src="Page/JS/Animation.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="site-title">PERLAS: Angler's Journey</a>
+            <nav class="header-nav" aria-label="Main navigation">
+                <a href="Home.html">Home</a>
+                <a href="lessonsHome.html">Store</a>
+                <a href="Connect.html">Connect</a>
+                <a href="Leaderboards.html">Leaderboard</a>
+                <div class="coin-indicator" id="coinIndicator">
+                    <button class="coin-button" id="coinTopupBtn" title="AquaGem">
+                        <span class="pearl">� pearl</span>
+                        <span id="coinTotal">0</span>
+                        <span class="topup">+ </span>
+                    </button>
+                </div>
+                <div class="account-menu" id="accountMenu">
+                    <button class="account-button" id="accountToggle" aria-haspopup="true" aria-expanded="false" aria-controls="accountPanel" title="Account">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <span class="visually-hidden">Account</span>
+                    </button>
+                    <div class="account-panel" id="accountPanel" role="menu" aria-hidden="true">
+                        <div class="account-panel__user" id="accountPanelUser">Signed in</div>
+                        <div class="account-panel__actions">
+                            <button type="button" class="account-action" id="manageAccountBtn">Manage account</button>
+                            <button type="button" class="account-action danger" id="signOutBtn">Sign out</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="Meet">
+        <p>Meet The Devs</p>
+    </div>
+    <div class="B">
+        <div class="Hold">
+            <!-- Unified team grid: five cards -->
+            <div class="team-grid">
+                <!-- Card 1 -->
+               <div class="team-card">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front front-1"></div>
+                            <div class="card-back placeholder-back">
+                                <i class="fa-brands fa-github placeholder-icon"></i>
+                                <h2 class="placeholder-name">John Patrick Lopez</h2>
+                                <p class="placeholder-role">Developer / Editor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="team-card">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front front-2"></div>
+                            <div class="card-back placeholder-back">
+                                <i class="fa-brands fa-github placeholder-icon"></i>
+                                <h2 class="placeholder-name">Julius Christian Navarete Sarmiento</h2>
+                                <p class="placeholder-role">Developer / Editor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 (placeholder) -->
+                <div class="team-card">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front front-3"></div>
+                            <div class="card-back placeholder-back">
+                                <i class="fa-brands fa-github placeholder-icon"></i>
+                                <h2 class="placeholder-name">Nyah Dexie Camacho</h2>
+                                <p class="placeholder-role">Developer / Editor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 (placeholder) -->
+                <div class="team-card">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front front-4"></div>
+                            <div class="card-back placeholder-back">
+                                <i class="fa-brands fa-github placeholder-icon"></i>
+                                <h2 class="placeholder-name">Chester Nikolai Garlet</h2>
+                                <p class="placeholder-role">Developer / Editor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 (placeholder) -->
+                <div class="team-card">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front front-5"></div>
+                            <div class="card-back placeholder-back">
+                                <i class="fa-brands fa-github placeholder-icon"></i>
+                                <h2 class="placeholder-name">Jun Christian Shimada</h2>
+                                <p class="placeholder-role">Developer / Editor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="Page/JS/account.js" defer></script>
+    <script src="Page/JS/coins.js" defer></script>
+</body>
+
+</html>

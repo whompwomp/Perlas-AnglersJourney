@@ -1,0 +1,438 @@
+/* Connect.css - updated: ocean theme and improved font sizes for accessibility */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+.site-footer-note {
+    text-align: center;
+    font-weight: lighter;
+    font-size: 10px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 8px 0;
+}
+:root{
+    --ocean-deep: #023047; /* dark navy */
+    --ocean-mid: #026873;  /* teal */
+    --ocean-light: #38d1c1; /* aqua */
+    --ocean-sky: #A7E6FF;  /* pale sky */
+    --card-bg: rgba(2,56,72,0.06);
+    --accent: #01595f;
+    --muted-text: #04454b;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+/* Removed custom webfont declarations to use system fonts for better performance and consistency */
+
+.top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+}
+.top .logo{
+    font-size: 3em;
+    color: var(--ocean-deep);
+    text-decoration: none;
+}
+/* increase base font size for better readability */
+html, body{
+    font-size: 18px; /* base for desktop; clamp used on components below */
+}
+.nav a{
+    position: relative;
+    font-size: 2em;
+    color: var(--ocean-deep);
+    text-decoration: none;
+    margin-left: 50px;
+}
+.nav a::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -6px;
+    height: 3px;
+    border-radius: 5px;
+    background: #000000;
+    transform: scaleX(0);
+    transition: .5s;
+}
+.nav a:hover::after{
+    transform: scaleX(1);
+}
+.main-content{
+    position: relative;
+    background-image: url();
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease;
+    width: 100%;
+    height: auto; 
+    text-align: center;
+    justify-content: center;
+    display: block;
+}      
+.main-content section{
+    padding: 6rem 1rem 3rem 1rem; /* responsive vertical spacing with side padding */
+}   
+.Topper h1{
+    font-size: 50px;
+    font-family: Pixels;
+    font-weight: lighter;
+}
+.Topper p{
+    font-size: 100px;
+    font-family: Pixels;
+    font-weight: bolder;
+    position: absolute;
+    margin-top: 110px;
+}
+
+.Cont{
+	max-width: 1170px;
+	margin:auto;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+ul{
+	list-style: none;
+}
+.footer{
+    background-color: #05323f;
+    padding: 50px 0 20px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #1b1818;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #000000;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}}
+.Perlas p{
+    padding: 20px;
+    font-size: 70px;
+    justify-content: center;
+    align-items: center;
+    font-family: Logo;
+}
+
+  .box{
+    opacity:0;
+    transform: translate(100px);  
+    transition: transform 0.6s ease; 
+    margin-bottom: 40px;
+  }
+  .box.show{
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 0.8s ease; 
+  } 
+  body{
+    overflow-x: hidden;
+  }
+  .sidebar .Disc{
+    opacity: 1;
+  }
+  .sidebar.active .Disc{
+    opacity: 1;
+  }
+.Th{
+    background-color: 2D3047;
+    left: 80px;
+    transition: all 0.5s ease;
+    text-align: right;
+    padding-right: 10px;
+    min-height: 20px;
+    padding-top: 5px;
+}
+.Fade {
+    opacity:1;
+    font-size: 100px;
+    animation: fadeIn 3s;
+}
+.Fade.Fadein{
+    opacity: 0;
+    animation: fadeIn 4s;
+}
+.Holder{
+    max-width: 1200px;
+    width: 98%;
+    display: grid;
+    grid-template-columns: 40% 60%; /* better distribution on wide screens */
+    gap: 1.5rem;
+    background: linear-gradient(180deg, rgba(3,79,94,0.06), rgba(3,79,94,0.03));
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(2,56,72,0.08);
+    border-radius: 12px;
+    align-items: center;
+    margin: 1.0rem auto;
+    min-height: calc(75vh); /* occupy most of viewport */
+}
+
+/* Center content in each grid cell and make form fields fill available space */
+.Holder{ justify-items: center; }
+.Holder .Contact{ width:100%; max-width: 560px; display:flex; flex-direction:column; align-items:center; }
+.Holder .Contact .label{ width:100%; text-align:center; font-size: clamp(1rem, 1.8vw, 1.2rem); }
+.Holder .Contact input, .Holder .Contact textarea, .Holder .Contact select{
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    font-size: 1.05rem;
+    box-sizing: border-box;
+}
+.Holder .Contact textarea{ min-height: 180px; }
+
+.form-actions{ display:flex; gap: 0.75rem; margin-top: 0.75rem; justify-content: center; }
+.Buttons{ min-width: 140px; padding: 0.9rem 1.2rem; font-size: 1rem; }
+.Contact{
+    background: linear-gradient(180deg, rgba(6,101,122,0.06), rgba(45,117,139,0.03));
+    border: 1px solid rgba(2, 56, 72, 0.06);
+    box-shadow: 0 6px 20px rgba(2,56,72,0.06);
+    border-radius: 10px;
+    padding: 1.25rem 1.25rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+    color: #022b30; /* stronger contrast */
+}
+.Buttons{
+    height: 46px;
+    min-width: 110px;
+    padding: 0 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    margin: 0.5rem 0.5rem 0 0;
+    border-radius: 10px;
+    background: linear-gradient(180deg, var(--ocean-mid), var(--accent));
+    color: #fff;
+    border: none;
+    box-shadow: 0 8px 18px rgba(2,56,72,0.12);
+    cursor: pointer;
+}
+.Buttons:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(2,56,72,0.18);
+    opacity: 0.98;
+}
+.Comsec{
+    width: 100%;
+    min-height: 160px;
+    resize: vertical;
+    border: 1px solid rgba(2,56,72,0.08);
+    border-radius: 8px;
+    padding: 0.85rem;
+    font-size: 1rem;
+    background: linear-gradient(180deg, #fff, rgba(167,230,255,0.02));
+}
+.discri{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 20px;
+}
+.Fade Img{
+    font-size: 100px;
+    animation: fadeIn 5s;
+}
+.description{
+    font-weight: lighter;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #e9fbfd, #f6fdff);
+    padding: 1.25rem 0 3.25rem 0;
+    min-height: calc(100vh - 140px); /* leave room for header/footer */
+}
+.container p{
+    font-size: 35px;
+}
+.disc{
+    margin: 0 2vw 0 1.5vw;
+    color: var(--ocean-deep);
+    max-width: 420px;
+}
+.disc p{
+    font-size: clamp(1.35rem, 3.8vw, 2.4rem);
+    line-height: 1.1;
+}
+
+.label{
+    color: #01292b; /* darker label color for contrast */
+}
+
+.Holder .Contact{
+    background-color: rgba(255,255,255,0.85); /* lighten card slightly to improve text contrast */
+}
+
+.Holder .disc, .Holder p{
+    color: var(--ocean-deep);
+}
+.label{
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+.Holder input[type="text"],
+.Holder input[type="email"],
+.Holder textarea,
+.Holder select{
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 0.85rem;
+    border: 1px solid rgba(2,56,72,0.08);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+}
+
+.form-actions{
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.form-status{
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: #054b2d;
+    background: rgba(3,79,94,0.04);
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+}
+
+@media (max-width: 900px){
+    .Holder{
+        grid-template-columns: 1fr;
+    }
+    .disc{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px){
+    .disc p{
+        font-size: 1.6rem;
+    }
+    .Buttons{
+        min-width: 80px;
+        height: 40px;
+    }
+}
+.TF{
+    max-height: 100px;
+    min-height: 100px;
+}
+
+/* Responsive container and layout refinements */
+.container{
+    width: 100%;
+    max-width: 1200px; /* prevents excessive stretching on large screens */
+    margin: 0 auto;
+    padding: 1.25rem; /* side spacing on small screens */
+    box-sizing: border-box;
+}
+
+/* Page title styling moved from inline */
+.page-title{
+    color: #01292b;
+    margin-top: 4rem;
+    font-family: Pixels;
+    font-size: clamp(1.8rem, 6vw, 4.5rem);
+    font-weight: 700;
+}
+
+/* Make images and media scale within their containers */
+img, picture, video{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 900px){
+    .Holder{ width: 100%; padding: 1rem; gap: 1rem; min-height: 0; }
+}
+
+@media (max-width: 600px){
+    .container{ padding: 1rem 1rem 2rem 1rem; }
+    .page-title{ font-size: 6vw; margin-top: 3.5rem; }
+}
+
+@media (max-width: 480px){
+    .top{ position: fixed; padding: 12px 14px; }
+    .main-content section{ padding-top: 5rem; }
+}

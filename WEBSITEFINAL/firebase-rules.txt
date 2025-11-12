@@ -1,0 +1,28 @@
+# Suggested Firebase Realtime Database rules for Perlas
+# These enforce that only admin accounts (emails containing @perlas.admin)
+# can write announcements or modify user active flags.
+
+{
+  "rules": {
+    "announcements": {
+      "list": {
+        ".read": true,
+        ".write": "auth != null && auth.token.email && auth.token.email.toLowerCase().indexOf('@perlas.admin') !== -1"
+      },
+      "latest": {
+        ".read": true,
+        ".write": "auth != null && auth.token.email && auth.token.email.toLowerCase().indexOf('@perlas.admin') !== -1"
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || auth.token.email && auth.token.email.toLowerCase().indexOf('@perlas.admin') !== -1)",
+        ".write": "auth != null && (auth.uid === $uid || auth.token.email && auth.token.email.toLowerCase().indexOf('@perlas.admin') !== -1)",
+        "active": {
+          ".write": "auth != null && auth.token.email && auth.token.email.toLowerCase().indexOf('@perlas.admin') !== -1"
+        }
+      }
+    },
+    ".read": true
+  }
+}

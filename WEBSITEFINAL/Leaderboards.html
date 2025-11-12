@@ -1,0 +1,172 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leaderboards - Perlas</title>
+    <link rel="stylesheet" href="Page/CSS/maincontent.css">
+    <link rel="stylesheet" href="Page/CSS/styles.css">
+    <!-- Font Awesome: prefer CDN for fonts; fall back to local files if offline -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Page/Icons/all.min.css">
+    <link rel="stylesheet" href="Page/Icons/fontawesome.min.css">
+    <style>
+        /* Page background uses LeadBG.png - image lives in Page/images/ */
+        body {
+            background: url('Page/images/LeadBG.png') no-repeat center top;
+            background-size: cover;
+            background-color: #f7f7f5; /* fallback/off-white */
+            color: #1b1818;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            /* center the inner container so the table sits in the middle */
+            max-width: 980px;
+            margin: 50px auto; /* top/bottom space, centers horizontally */
+            padding: 24px 20px;
+            box-sizing: border-box;
+        }
+
+        .leaderboards-title {
+            text-align: center;
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        /* Simplified two-column leaderboard to match mockup */
+        .leaderboard-table {
+            width: 720px;
+            max-width: calc(100% - 40px);
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: transparent;
+            border: 6px solid #9fb0d0; /* outer frame color similar to mockup */
+        }
+
+        .leaderboard-table thead th {
+            padding: 18px 12px;
+            text-align: center;
+            font-weight: 700;
+            background: transparent;
+            color: #1b1818;
+            font-size: 1rem;
+        }
+
+        .leaderboard-table tbody td {
+            padding: 22px 12px; /* give rows plenty of vertical space */
+            text-align: center;
+            background: rgba(255,255,255,0.85);
+            color: #1b1818;
+            font-size: 1rem;
+        }
+
+        /* horizontal separators between rows */
+        .leaderboard-table tbody tr + tr td {
+            border-top: 4px solid #9fb0d0;
+        }
+
+        /* vertical divider between the two columns */
+        .leaderboard-table td + td {
+            border-left: 4px solid #9fb0d0;
+        }
+
+        /* empty-row helper to mimic the visual spacing in the mockup */
+        .empty-row td {
+            height: 64px;
+            padding: 0;
+        }
+
+        @media (max-width: 800px) {
+            .leaderboard-table { width: 100%; }
+            .leaderboard-table tbody td { padding: 14px 8px; }
+            .main-content { margin: 30px 12px; }
+        }
+        .footer p {
+            text-align: center;
+            color: rgb(15, 15, 15);
+            margin: 24px 0 40px;
+        }
+    </style>
+</head>
+<body>
+   
+            <header class="site-header">
+                <div class="header-inner">
+                    <a href="index.html" class="site-title">PERLAS: Angler's Journey</a>
+                    <nav class="header-nav" aria-label="Main navigation">
+                        <a href="Home.html">Home</a>
+                        <a href="Connect.html">Connect</a>
+                        <a href="AboutUs.html">Devs</a>
+                        <div class="coin-indicator" id="coinIndicator">
+                            <button class="coin-button" id="coinTopupBtn" title="AquaGem">
+                                <span class="pearl">� pearl</span>
+                                <span id="coinTotal">0</span>
+                                <span class="topup">+ </span>
+                            </button>
+                        </div>
+                        <div class="account-menu" id="accountMenu">
+                            <button class="account-button" id="accountToggle" aria-haspopup="true" aria-expanded="false" aria-controls="accountPanel" title="Account">
+                                <i class="fa-regular fa-user" aria-hidden="true"></i>
+                                <span class="visually-hidden">Account</span>
+                            </button>
+                            <div class="account-panel" id="accountPanel" role="menu" aria-hidden="true">
+                                <div class="account-panel__user" id="accountPanelUser">Signed in</div>
+                                <div class="account-panel__actions">
+                                    <button type="button" class="account-action" id="manageAccountBtn">Manage account</button>
+                                    <button type="button" class="account-action danger" id="signOutBtn">Sign out</button>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+    <div class="main-content">
+        <h2 class="leaderboards-title">ANGLER's<br>LEADERBOARD</h2>
+
+        <table class="leaderboard-table" aria-label="Angler's leaderboard">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Total caught</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- sample rows; your existing JS can populate rows instead -->
+                <tr>
+                    <td>FishMaster</td>
+                    <td>120</td>
+                </tr>
+                <tr class="empty-row">
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>OceanQueen</td>
+                    <td>110</td>
+                </tr>
+                <tr class="empty-row">
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>LegendaryLure</td>
+                    <td>100</td>
+                </tr>
+                <tr class="empty-row">
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <!-- Page scripts: account + coins UI, then Firebase and leaderboard population -->
+    <script src="Page/JS/account.js" defer></script>
+    <script src="Page/JS/coins.js" defer></script>
+    <script defer src="Page/JS/firebase-init.js"></script>
+    <script src="Page/JS/leaderboard.js" defer></script>
+</body>

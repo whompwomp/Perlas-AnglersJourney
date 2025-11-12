@@ -1,0 +1,96 @@
+:root{
+    --base-font-size: clamp(16px, 1.6vw, 20px); /* responsive base font */
+    --container-max: 1150px;
+    --site-bg: #f7f7f5; /* off-white background to match landing */
+}
+
+html{ font-size: var(--base-font-size); }
+body {
+    /* Use a system font stack for performance and consistency */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--site-bg);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+   
+}
+
+/* White glow utility and default glow for prominent elements */
+
+/* Apply glow to common prominent elements site-wide (override as needed) */
+.top .logo,
+.nav a,
+.logo p,
+h1, h2, h3,
+.btn, .button,
+.Link,
+.footer-col h4 {
+    text-shadow: none;
+}
+
+/* For paragraphs and body text use a subtler glow to keep readability */
+p, body, li, label {
+    text-shadow: none;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 2.5rem auto;
+    padding: 1.25rem 1.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.12);
+    border-radius: 12px; 
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;  
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 0.95rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Utility: make a container slightly larger than its contents */
+.wide-container{
+    max-width: calc(var(--container-max) + 120px);
+    padding: 2rem 2rem;
+}
+
+/* Larger, more comfortable text and spacing */
+p{
+    font-size: clamp(1rem, 1.8vw, 1.125rem);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+label{ font-size: 1.025rem; }
+input, select, textarea { font-size: 1rem; padding: 0.85rem; }

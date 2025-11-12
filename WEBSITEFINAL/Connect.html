@@ -1,0 +1,128 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PERLAS Connect with Us</title>
+    <link rel="stylesheet" href="Page/CSS/maincontent.css">
+    <link rel="stylesheet" href="Page/CSS/Connect.css">
+    <link rel="stylesheet" href="Page/CSS/styles.css">
+    <!-- Font Awesome: prefer CDN for fonts; fall back to local files if offline -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Page/Icons/all.min.css">
+    <link rel="stylesheet" href="Page/Icons/fontawesome.min.css">
+    <script defer src="Page/JS/Animation.js"></script>
+    <script defer src="Page/JS/Connect.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    </head>
+   <body>
+            <header class="site-header">
+                <div class="header-inner">
+                    <a href="index.html" class="site-title">PERLAS: Angler's Journey</a>
+                    <nav class="header-nav" aria-label="Main navigation">
+                        <a href="store.html">Store</a>
+                        <a href="Home.html">Home</a>
+                        <a href="Devs.html">Devs</a>
+                            <a href="Leaderboards.html">Leaderboard</a>
+                            <a href="Login.html" class="account-icon" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+                    </nav>
+                </div>
+            </header>
+<div class="main-content">
+    <section id="home">
+        <p class="page-title">Connect with Us</p>
+    </section>
+    </div>
+    <div class="container">
+  
+        <form id="contactForm" class="Holder" novalidate>
+            <!-- Add data attributes for EmailJS -->
+            <div class="Contact contact-row">
+                <input id="name" name="name" type="text" required placeholder="Name" class="contact-input name">
+                <input id="email" name="email" type="email" required placeholder="Email" class="contact-input email">
+            </div>
+
+            <div class="Contact">
+                <label for="message" class="label">Message</label>
+                <textarea id="message" name="message" class="Comsec" rows="8" required placeholder="Write your message here..."></textarea>
+
+                <div class="form-actions">
+                    <button type="submit" class="Buttons">Send</button>
+                    <button type="reset" class="Buttons">Reset</button>
+                </div>
+                <div id="formStatus" aria-live="polite" class="form-status" hidden></div>
+            </div>
+        </form>
+    </div>
+    <script>
+    // Contact form: open Gmail compose (user's account) or fallback to mailto:
+    (function(){
+    const RECIPIENT = 'lopez.johnpatrick@ncst.edu.ph'; // recipient for contact form
+
+        function showStatus(msg, ok=true){
+            const status = document.getElementById('formStatus');
+            status.textContent = msg;
+            status.style.color = ok ? 'green' : 'red';
+            status.hidden = false;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const nameEl = document.getElementById('name');
+            const emailEl = document.getElementById('email');
+            const messageEl = document.getElementById('message');
+            const status = document.getElementById('formStatus');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                status.hidden = true;
+
+                const name = (nameEl.value || '').trim();
+                const fromEmail = (emailEl.value || '').trim();
+                const message = (messageEl.value || '').trim();
+
+                // basic validation
+                if (!name) { nameEl.style.borderColor = 'red'; showStatus('Please enter your name.', false); return; }
+                nameEl.style.borderColor = '';
+                if (!fromEmail || !/^\S+@\S+\.\S+$/.test(fromEmail)) { emailEl.style.borderColor = 'red'; showStatus('Please enter a valid email address.', false); return; }
+                emailEl.style.borderColor = '';
+                if (!message) { messageEl.style.borderColor = 'red'; showStatus('Please enter a message.', false); return; }
+                messageEl.style.borderColor = '';
+
+                const subject = `Perlas Contact: ${name}`;
+                const body = `From: ${name} <${fromEmail}>\n\n${message}\n\n--\nSent from Perlas website`;
+
+                // Prefer opening Gmail compose (so the user sends using their Gmail account in the browser)
+                const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1' +
+                    '&to=' + encodeURIComponent(RECIPIENT) +
+                    '&su=' + encodeURIComponent(subject) +
+                    '&body=' + encodeURIComponent(body);
+
+                const newWin = window.open(gmailUrl, '_blank');
+                if (!newWin) {
+                    // popup blocked — fallback to mailto:
+                    const mailto = 'mailto:' + encodeURIComponent(RECIPIENT) +
+                        '?subject=' + encodeURIComponent(subject) +
+                        '&body=' + encodeURIComponent(body);
+                    window.location.href = mailto;
+                    showStatus('Opened your mail application. Complete and send the message to deliver it using your account.');
+                } else {
+                    showStatus('A compose window was opened in a new tab. Complete and send the email using your account.');
+                    form.reset();
+                }
+            });
+
+            form.addEventListener('reset', function(){
+                nameEl.style.borderColor = '';
+                emailEl.style.borderColor = '';
+                messageEl.style.borderColor = '';
+                status.hidden = true;
+            });
+        });
+    })();
+    </script>
+    </body>
+     <div class="TF">
+<div class="site-footer-note">All rights reserved. © 2024 Perlas IT Services. Designed and maintained by Lopez & Alipala_BSCS22M1</div>
+</div>
+</html>
